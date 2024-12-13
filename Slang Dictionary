@@ -1,0 +1,54 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(SlangDictionaryApp());
+}
+
+class SlangTerm {
+  final String term;
+  final String definition;
+
+  SlangTerm({required this.term, required this.definition});
+}
+
+List<SlangTerm> slangTerms = [
+  SlangTerm(term: "Lit", definition: "Very cool or excellent."),
+  SlangTerm(term: "Flex", definition: "To show off."),
+  SlangTerm(term: "Ghost", definition: "To suddenly cut off communication."),
+  SlangTerm(term: "Salty", definition: "Being upset or bitter."),
+  SlangTerm(term: "Tea", definition: "Juicy gossip or information."),
+  SlangTerm(term: "Woke", definition: "Being socially aware."),
+  SlangTerm(term: "Throw shade", definition: "To criticize someone indirectly."),
+  SlangTerm(term: "Vibe", definition: "The feeling or atmosphere of a place."),
+  SlangTerm(term: "Bet", definition: "Sure, okay, or agreement."),
+  SlangTerm(term: "No cap", definition: "No lie or being truthful."),
+];
+
+class SlangDictionaryApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Slang Dictionary',
+      home: SlangListScreen(),
+    );
+  }
+}
+
+class SlangListScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Slang Dictionary')),
+      body: ListView.builder(
+        itemCount: slangTerms.length,
+        itemBuilder: (context, index) {
+          final term = slangTerms[index];
+          return ListTile(
+            title: Text(term.term),
+            subtitle: Text(term.definition),
+          );
+        },
+      ),
+    );
+  }
+}
